@@ -39,7 +39,7 @@ impl Brick {
             shape.clone(),
             body,
             Isometry2::identity(),
-            Material::new(0.0, 08.0)
+            Material::new(0.0, 1.0)
         );
         let uid = collision_object.uid();
         let ttl: Option<f64> = None;

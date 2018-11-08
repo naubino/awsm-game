@@ -21,7 +21,21 @@ void async function main() {
 
     document.body.appendChild(canvas);
 
-    const game = new wasm.Game(canvas, gorilla_img, { width, height });
+    const integration_parameters = {
+        dt: 1.0 / 60.0,
+        erp: 0.2,
+        warmstart_coeff: 1.0,
+        restitution_velocity_threshold: 1.0,
+        allowed_linear_error: 0.001,
+        allowed_angular_error: 0.001,
+        mex_max_linear_correction: 100.0,
+        max_angular_correction: 0.2,
+        max_stabilization_multiplier: 0.2,
+        max_velocity_iterations: 20,
+        max_position_iterations: 3,
+    };
+
+    const game = new wasm.Game(canvas, gorilla_img, { width, height, integration_parameters });
     window.game = game;
 
     const style = [ '#04aaac', '#ac0204', '#acaaac', '#aa04ac', '#aaac04' ]
